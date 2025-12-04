@@ -30,7 +30,7 @@ if [ ! -f "$YAY" ]; then
 
     # Build and install yay
     cd /tmp/yay
-    makepkg -si --noconfirm
+    sudo makepkg -si --noconfirm
     cd -
 
     # Clean up
@@ -59,8 +59,14 @@ if [[ $change_network == "y" || $change_network == "Y" ]]; then
     # Install network manager if not installed
     sudo pacman -S --needed --noconfirm networkmanager network-manager-applet
 
-    # Enable and start NetworkManager service
-    sudo systemctl enable --now NetworkManager.service
+    # Check if NetworkManager is already running
+    if ! systemctl is-active --quiet NetworkManager.service; then
+        # Enable and start NetworkManager service
+        sudo systemctl enable --now NetworkManager.service
+        echo -e "NetworkManager started successfully.\n"
+    else
+        echo -e "NetworkManager is already running.\n"
+    fi
     sleep 2
     clear
 fi
