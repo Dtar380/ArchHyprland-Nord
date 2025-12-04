@@ -1,0 +1,12 @@
+#!/bin/bash
+
+sed 's/#.*//' packages.txt | while read pkg; do
+    if [ -z "$pkg" ]; then
+        continue
+    fi
+    if yay -Qi $pkg &> /dev/null; then
+        echo "$pkg is already installed."
+    else
+        echo "$pkg was not found."
+    fi
+done

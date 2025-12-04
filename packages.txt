@@ -54,7 +54,7 @@ playerctl                    # controlar reproductores multimedia desde terminal
 # -----------------------------
 # Navegador
 # -----------------------------
-zen-browser                  # navegador minimalista (Wayland compatible)
+zen-browser-bin              # navegador minimalista (Wayland compatible)
 
 # -----------------------------
 # Editores
