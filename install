@@ -86,7 +86,7 @@ fi
 # Install all yay packages from the packages.txt file
 if [ -f "packages.txt" ]; then
     echo -e "Installing AUR packages from packages.txt...\n"
-    grep -v '^#' packages.txt | grep -v '^$' | xargs yay -S --needed --noconfirm
+    sed 's/#.*//' packages.txt | xargs yay -S --needed --noconfirm
     echo -e "\nAUR package installation completed.\n"
 
     # Clean up
