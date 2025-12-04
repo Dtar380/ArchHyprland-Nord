@@ -1,0 +1,126 @@
+#!/bin/bash
+
+##################################################
+#     INSTALL SCRIPT FOR RICE (NORD THEME)       #
+#     By Dtar380                                 #
+##################################################
+
+# This script automates the installation and configuration
+# of a customized Arch Linux environment with the Nord theme.
+
+# Update the system
+echo -e "Updating the system...\n"
+sudo pacman -Syu --noconfirm
+sleep 2
+clear
+
+# Install necessary packages
+echo -e "Installing necessary packages...\n"
+sudo pacman -S --needed --noconfirm base-devel curl wget unzip
+sleep 2
+clear
+
+# Install yay AUR helper if not installed
+YAY=/usr/bin/yay
+if [ ! -f "$YAY" ]; then
+    echo -e "Yay not found. Installing yay AUR helper...\n"
+
+    # Clone yay repository
+    git clone https://aur.archlinux.org/yay.git /tmp/yay
+
+    # Build and install yay
+    cd /tmp/yay
+    makepkg -si --noconfirm
+    cd -
+
+    # Clean up
+    rm -rf /tmp/yay
+    sleep 2
+    clear
+else
+    echo -e "Yay is already installed.\n"
+    sleep 2
+    clear
+fi
+
+
+# Install and start bluetooth and audio services
+echo -e "Installing and starting bluetooth and audio services...\n"
+sudo pacman -S --needed --noconfirm bluez bluez-utils pipewire pipewire-pulse wireplumber pavucontrol
+sudo systemctl enable --now bluetooth.service
+systemctl --user enable --now pipewire.service pipewire-pulse.service wireplumber.service
+sleep 2
+clear
+
+# Prompt user for optional configurations
+# Network configuration
+read -p "Do you want to change the network configuration? (y/n): " change_network
+if [[ $change_network == "y" || $change_network == "Y" ]]; then
+    # Install network manager if not installed
+    sudo pacman -S --needed --noconfirm networkmanager network-manager-applet
+
+    # Enable and start NetworkManager service
+    sudo systemctl enable --now NetworkManager.service
+    sleep 2
+    clear
+fi
+
+# Default shell configuration
+read -p "Want to change the default shell to zsh? (y/n): " change_shell
+if [[ $change_shell == "y" || $change_shell == "Y" ]]; then
+    # Install zsh if not installed
+    sudo pacman -S --needed --noconfirm zsh
+
+    # Change default shell to zsh
+    chsh -s $(which zsh) $USER
+    sleep 2
+    clear
+fi
+
+# Install all yay packages from the packages.txt file
+if [ -f "packages.txt" ]; then
+    echo -e "Installing AUR packages from packages.txt...\n"
+    grep -v '^#' packages.txt | grep -v '^$' | xargs yay -S --needed --noconfirm
+    echo -e "\nAUR package installation completed.\n"
+
+    # Clean up
+    echo -e "Removing unnecessary xdg-desktop-portal packages...\n"
+    yay -R --noconfirm xdg-desktop-portal-gtk xdg-desktop-portal-gnome
+    sleep 2
+    clear
+else
+    echo -e "packages.txt file not found. Skipping AUR package installation.\n"
+    sleep 2
+    clear
+fi
+
+# Creating folders in home directory
+echo -e "Creating necessary folders in the home directory...\n"
+mkdir -p ~/documents ~/downloads ~/images/wallpapers ~/music ~/videos
+sleep 2
+clear
+
+# Copy all config files to the user's home directory
+echo -e "Copying configuration files to the user's home directory...\n"
+cp -r wallpapers ~/images/wallpapers
+cp -r ./.config ~/.config
+sleep 2
+clear
+
+# Clear cache
+echo -e "Clearing package cache...\n"
+sudo pacman -Sc --noconfirm
+sudo pacman -Scc --noconfirm
+yay -Sc --noconfirm
+sleep 2
+clear
+
+# Start and reload systemd services
+echo -e "Starting and reloading systemd services...\n"
+sudo systemctl daemon-reload
+sudo systemctl enable sddm.service
+sleep 2
+clear
+
+echo -e "Installation and configuration completed successfully!\n"
+exit 0

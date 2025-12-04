@@ -1,0 +1,63 @@
+# -----------------------------
+# Compositor y herramientas Wayland
+# -----------------------------
+hyprland                     # Wayland compositor (base de tu entorno gráfico)
+xdg-desktop-portal           # soporte de portales para aplicaciones sandbox (Flatpak, etc.)
+xdg-desktop-portal-hyprland  # integración específica para Hyprland con XDG portals
+hypridle                     # gestiona idle, bloqueo de pantalla y suspensión
+hyprshot                     # capturas de pantalla
+hyprpaper                    # gestor de fondos de pantalla
+hyprlauncher                 # lanzador de aplicaciones estilo dmenu/Rofi
+hyprlock                     # bloqueo de pantalla
+mako                         # notificador de escritorio
+wl-clipboard                 # copiar/pegar en Wayland desde terminal
+eww                          # widgets de escritorio y paneles personalizables
+
+
+# -----------------------------
+# Login/display manager
+# -----------------------------
+sddm                         # Display Manager (pantalla de login)
+
+# -----------------------------
+# Fuentes
+# -----------------------------
+ttf-jetbrains-mono-nerd      # fuente con iconos Nerd Font para terminal y widgets
+ttf-font-awesome             # iconos para apps y widgets
+noto-fonts                   # fuentes generales
+noto-fonts-emoji             # emojis para terminal y aplicaciones
+noto-fonts-cjk               # soporte de caracteres asiáticos
+
+# -----------------------------
+# Terminal y utilidades
+# -----------------------------
+kitty                        # emulador de terminal GPU acelerado
+fastfetch                    # información del sistema al estilo neofetch
+oh-my-posh                   # prompt avanzado y personalizable
+fzf                          # fuzzy finder para terminal
+lsd                          # reemplazo de ls con colores e iconos
+bat                          # cat mejorado con resaltado de sintaxis y numeración de líneas
+zoxide                       # navegación rápida de directorios
+ripgrep                      # búsqueda rápida de texto en archivos
+
+# -----------------------------
+# Explorador de archivos
+# -----------------------------
+yazi                         # Explorador de archivos en la terminal
+
+# -----------------------------
+# Multimedia
+# -----------------------------
+mpv                          # reproductor de video y audio
+playerctl                    # controlar reproductores multimedia desde terminal
+
+# -----------------------------
+# Navegador
+# -----------------------------
+zen-browser                  # navegador minimalista (Wayland compatible)
+
+# -----------------------------
+# Editores
+# -----------------------------
+neovim                       # editor de texto moderno, mejorado sobre Vim
+neomutt                      # cliente de correo en terminal
