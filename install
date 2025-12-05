@@ -108,7 +108,7 @@ clear
 
 # Copy all config files to the user's home directory
 echo -e "Copying configuration files to the user's home directory...\n"
-cp -r wallpapers ~/images/wallpapers
+cp -r wallpapers ~/images/
 cp -r ./.config ~/.config
 sleep 2
 clear
