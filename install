@@ -8,6 +8,20 @@
 # This script automates the installation and configuration
 # of a customized Arch Linux environment with the Nord theme.
 
+# Configure sudo timeout for this session
+SUDO_CONFIG="/etc/sudoers.d/temp_install_timeout"
+echo "Defaults timestamp_timeout=120" | sudo tee "$SUDO_CONFIG" > /dev/null
+sudo chmod 440 "$SUDO_CONFIG"
+
+# Cleanup function to restore sudo settings
+cleanup_sudo() {
+    sudo rm -f "$SUDO_CONFIG" 2>/dev/null
+}
+trap cleanup_sudo EXIT
+
+# Initialize sudo credentials
+sudo -v
+
 # Update the system
 echo -e "Updating the system...\n"
 sudo pacman -Syu --noconfirm
@@ -91,7 +105,7 @@ if [ -f "packages.txt" ]; then
 
     # Clean up
     echo -e "Removing unnecessary xdg-desktop-portal packages...\n"
-    yay -R --noconfirm xdg-desktop-portal-gtk xdg-desktop-portal-gnome
+    yay -R --noconfirm xdg-desktop-portal-gnome
     sleep 2
     clear
 else
@@ -102,13 +116,13 @@ fi
 
 # Creating folders in home directory
 echo -e "Creating necessary folders in the home directory...\n"
-mkdir -p ~/documents ~/downloads ~/images/wallpapers ~/music ~/videos
+mkdir -p ~/Documents ~/Downloads ~/Images/Wallpapers ~/Music ~/Videos
 sleep 2
 clear
 
 # Copy all config files to the user's home directory
 echo -e "Copying configuration files to the user's home directory...\n"
-cp -r wallpapers ~/images/
+cp -r Wallpapers ~/Images
 cp -r ./.config ~/.config
 sleep 2
 clear

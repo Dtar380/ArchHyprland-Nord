@@ -1,63 +1,64 @@
 # -----------------------------
-# Compositor y herramientas Wayland
+# Wayland compositor and tools
 # -----------------------------
-hyprland                     # Wayland compositor (base de tu entorno gráfico)
-xdg-desktop-portal           # soporte de portales para aplicaciones sandbox (Flatpak, etc.)
-xdg-desktop-portal-hyprland  # integración específica para Hyprland con XDG portals
-hypridle                     # gestiona idle, bloqueo de pantalla y suspensión
-hyprshot                     # capturas de pantalla
-hyprpaper                    # gestor de fondos de pantalla
-hyprlauncher                 # lanzador de aplicaciones estilo dmenu/Rofi
-hyprlock                     # bloqueo de pantalla
-mako                         # notificador de escritorio
-wl-clipboard                 # copiar/pegar en Wayland desde terminal
-eww                          # widgets de escritorio y paneles personalizables
-
+hyprland                     # Wayland compositor (main graphical environment)
+xdg-desktop-portal           # portal support for sandboxed apps (Flatpak, etc.)
+xdg-desktop-portal-hyprland  # Hyprland-specific integration for XDG portals
+xdg-desktop-portal-gtk       # GTK environment integration for XDG portals
+hypridle                     # manages idle behavior, screen locking, and suspend
+hyprshot                     # screenshot tool for Wayland
+hyprpaper                    # wallpaper manager
+hyprlauncher                 # application launcher similar to dmenu/Rofi
+hyprlock                     # screen locker
+mako                         # lightweight desktop notification daemon
+wl-clipboard                 # clipboard utilities for Wayland (terminal copy/paste)
+cliphist                     # clipboard history manager (requires wl-clipboard)
+eww                          # customizable widgets and desktop panels
 
 # -----------------------------
 # Login/display manager
 # -----------------------------
-sddm                         # Display Manager (pantalla de login)
+sddm                         # display manager (login screen)
 
 # -----------------------------
-# Fuentes
+# Fonts
 # -----------------------------
-ttf-jetbrains-mono-nerd      # fuente con iconos Nerd Font para terminal y widgets
-ttf-font-awesome             # iconos para apps y widgets
-noto-fonts                   # fuentes generales
-noto-fonts-emoji             # emojis para terminal y aplicaciones
-noto-fonts-cjk               # soporte de caracteres asiáticos
+ttf-jetbrains-mono-nerd      # Nerd Font with icons for terminal and widgets
+ttf-font-awesome             # icon fonts for apps and widgets
+noto-fonts                   # general-purpose font family
+noto-fonts-emoji             # emoji support for terminal and apps
+noto-fonts-cjk               # CJK character support (Chinese, Japanese, Korean)
 
 # -----------------------------
-# Terminal y utilidades
+# Terminal and utilities
 # -----------------------------
-kitty                        # emulador de terminal GPU acelerado
-fastfetch                    # información del sistema al estilo neofetch
-oh-my-posh                   # prompt avanzado y personalizable
-fzf                          # fuzzy finder para terminal
-lsd                          # reemplazo de ls con colores e iconos
-bat                          # cat mejorado con resaltado de sintaxis y numeración de líneas
-zoxide                       # navegación rápida de directorios
-ripgrep                      # búsqueda rápida de texto en archivos
+kitty                        # GPU-accelerated terminal emulator
+fastfetch                    # system information tool similar to neofetch
+oh-my-posh                   # customizable and advanced shell prompt
+fzf                          # fuzzy finder for the terminal
+lsd                          # modern ls replacement with colors and icons
+bat                          # enhanced cat with syntax highlighting and line numbers
+zoxide                       # smart and fast directory navigation
+ripgrep                      # fast text search in files
 
 # -----------------------------
-# Explorador de archivos
+# File explorer
 # -----------------------------
-yazi                         # Explorador de archivos en la terminal
+yazi                         # terminal-based file manager
 
 # -----------------------------
 # Multimedia
 # -----------------------------
-mpv                          # reproductor de video y audio
-playerctl                    # controlar reproductores multimedia desde terminal
+mpv                          # video and audio player
+playerctl                    # control media players from the terminal
 
 # -----------------------------
-# Navegador
+# Browser
 # -----------------------------
-zen-browser-bin              # navegador minimalista (Wayland compatible)
+zen-browser-bin              # minimalistic browser (Wayland compatible)
 
 # -----------------------------
-# Editores
+# Editors
 # -----------------------------
-neovim                       # editor de texto moderno, mejorado sobre Vim
-neomutt                      # cliente de correo en terminal
+neovim                       # modern text editor, an improved version of Vim
+neomutt                      # terminal-based email client
